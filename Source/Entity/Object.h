@@ -4,6 +4,7 @@
 #include <Component/BoundingBox.h>
 #include <Component/Name.h>
 #include <Component/Transform.h>
+#include <Component/SpriteAnimation.h>
 #include "Entity.h"
 #include "Tag.h"
 
@@ -22,6 +23,7 @@ namespace Project::Entity
         std::shared_ptr<Project::Component::BoundingBox> bounding_box;
         std::shared_ptr<Project::Component::Name>        name;
         std::shared_ptr<Project::Component::Transform>   transform;
+        std::shared_ptr<Project::Component::SpriteAnimation> sprite_animation;
         
         void destroy();
         std::size_t get_id() const;

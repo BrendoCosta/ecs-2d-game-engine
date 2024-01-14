@@ -1,9 +1,12 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <Component/Vec2.h>
+#include <Component/Sprite.h>
+#include <Component/SpriteAnimation.h>
 #include "Game.h"
 #include "Movement.h"
 #include "Renderer.h"
+#include "Animation.h"
 
 Project::System::Game::Game()
 {
@@ -18,7 +21,36 @@ Project::System::Game::Game()
         obj->transform = std::make_shared<Project::Component::Transform>(Project::Component::Transform {});
         obj->transform->position.x = 640/2 - 150;
         obj->transform->position.y = 480/2 - 150;
-
+        obj->sprite_animation = std::make_shared<Project::Component::SpriteAnimation>();
+        //obj->sprite_animation->frame_rate = 3.f;
+        //obj->sprite_animation->loop = false;
+        obj->sprite_animation->frames.push_back(
+            {
+                nullptr,
+                { 0.f, 0.f },
+                0,
+                0,
+                300.f
+            }
+        );
+        obj->sprite_animation->frames.push_back(
+            {
+                nullptr,
+                { 0.f, 0.f },
+                0,
+                0,
+                1000.f
+            }
+        );
+        obj->sprite_animation->frames.push_back(
+            {
+                nullptr,
+                { 0.f, 0.f },
+                0,
+                0,
+                300.f
+            }
+        );
     }
 }
 
@@ -46,6 +78,7 @@ void Project::System::Game::update(float dt)
             }
             //obj->transform->position.rotate((25.f/100.f)/1.f * dt, Project::Component::Vec2(640/2, 480/2));
         }
+        Project::System::Animation::update(obj);
         this->m_render_system.add_object(obj);
     }
     this->m_render_system.render(this->m_renderer);
