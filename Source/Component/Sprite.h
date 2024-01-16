@@ -9,8 +9,9 @@ namespace Project::Component
     {
         std::shared_ptr<SDL_Surface> surface = nullptr;
         Project::Component::Vec2f position = { 0.f, 0.f };
-        std::size_t width = 0;
-        std::size_t height = 0;
+        float width = 0.f;
+        float height = 0.f;
+        Project::Component::Vec2f scale = { 1.f, 1.f };
         float duration = 0.f;
     };
 }

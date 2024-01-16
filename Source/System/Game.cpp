@@ -7,6 +7,7 @@
 #include "Movement.h"
 #include "Renderer.h"
 #include "Animation.h"
+#include "Image.h"
 
 Project::System::Game::Game()
 {
@@ -22,33 +23,67 @@ Project::System::Game::Game()
         obj->transform->position.x = 640/2 - 150;
         obj->transform->position.y = 480/2 - 150;
         obj->sprite_animation = std::make_shared<Project::Component::SpriteAnimation>();
-        //obj->sprite_animation->frame_rate = 3.f;
+        obj->sprite_animation->frame_rate = 12.f;
         //obj->sprite_animation->loop = false;
+        std::shared_ptr<SDL_Surface> sprite_sheet = Project::System::Image::load_image("../Assets/rgbba.png");
         obj->sprite_animation->frames.push_back(
             {
-                nullptr,
-                { 0.f, 0.f },
-                0,
-                0,
-                300.f
+                .surface = sprite_sheet,
+                .position = { 0.f, 0.f },
+                .width = 16.f,
+                .height = 16.f,
+                .scale = { 3.f, 3.f },
+                .duration = 0.f
             }
         );
         obj->sprite_animation->frames.push_back(
             {
-                nullptr,
-                { 0.f, 0.f },
-                0,
-                0,
-                1000.f
+                .surface = sprite_sheet,
+                .position = { 16.f, 0.f },
+                .width = 16.f,
+                .height = 16.f,
+                .scale = { 3.f, 3.f },
+                .duration = 0.f
             }
         );
         obj->sprite_animation->frames.push_back(
             {
-                nullptr,
-                { 0.f, 0.f },
-                0,
-                0,
-                300.f
+                .surface = sprite_sheet,
+                .position = { 32.f, 0.f },
+                .width = 16.f,
+                .height = 16.f,
+                .scale = { 3.f, 3.f },
+                .duration = 0.f
+            }
+        );
+        obj->sprite_animation->frames.push_back(
+            {
+                .surface = sprite_sheet,
+                .position = { 48.f, 0.f },
+                .width = 16.f,
+                .height = 16.f,
+                .scale = { 3.f, 3.f },
+                .duration = 0.f
+            }
+        );
+        obj->sprite_animation->frames.push_back(
+            {
+                .surface = sprite_sheet,
+                .position = { 64.f, 0.f },
+                .width = 16.f,
+                .height = 16.f,
+                .scale = { 3.f, 3.f },
+                .duration = 0.f
+            }
+        );
+        obj->sprite_animation->frames.push_back(
+            {
+                .surface = sprite_sheet,
+                .position = { 80.f, 0.f },
+                .width = 16.f,
+                .height = 16.f,
+                .scale = { 3.f, 3.f },
+                .duration = 0.f
             }
         );
     }
